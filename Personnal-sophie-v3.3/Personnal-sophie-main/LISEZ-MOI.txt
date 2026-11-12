@@ -1,0 +1,35 @@
+CORRECTIF VOCAL VOSK — PERSONAL OS
+
+CONTENU
+- voice.js : reconnaissance vocale française locale dans Chrome via Vosk-Browser/WebAssembly.
+- INSTALLER_MODELE_VOSK.ps1 : télécharge le modèle français officiel Vosk (~41 Mo) et le prépare.
+
+INSTALLATION
+1. Arrêter le serveur PERSONAL OS (Ctrl+C dans le terminal).
+2. Copier voice.js dans D:\LFS\js\voice.js en remplaçant l'ancien fichier.
+3. Copier INSTALLER_MODELE_VOSK.ps1 dans D:\LFS\ (à côté de server.js).
+4. Dans PowerShell, depuis D:\LFS, exécuter :
+   powershell -ExecutionPolicy Bypass -File .\INSTALLER_MODELE_VOSK.ps1
+5. Attendre la fin du téléchargement et de la préparation du modèle.
+6. Relancer : node server.js
+7. Ouvrir http://localhost:8080 dans Chrome.
+8. Autoriser le microphone, aller dans les réglages Sophie et activer « Activation Hé Sophie ».
+
+PREMIÈRE UTILISATION
+- Le modèle français pèse environ 41 Mo et est téléchargé une seule fois.
+- La bibliothèque Vosk-Browser est chargée depuis jsDelivr ; Internet est donc nécessaire au premier chargement (et pour recharger la bibliothèque si le cache est vidé).
+- La reconnaissance audio est ensuite exécutée dans le navigateur, localement, sans envoyer les extraits audio à ElevenLabs.
+- ElevenLabs reste utilisé uniquement pour la voix de sortie (TTS) via le proxy déjà configuré.
+
+COMMANDES
+- « Sophie » : réveille l'assistante et ouvre une fenêtre d'écoute d'environ 6,5 secondes.
+- « Salut Sophie, ... » ou « Hé Sophie, ... » : transmet la commande si elle est prononcée dans la même séquence reconnue.
+- Après exécution et réponse, la veille reprend automatiquement si l'option est activée.
+- Le bouton micro permet une dictée ponctuelle.
+
+IMPORTANT
+- Garder PERSONAL OS ouvert dans Chrome et le serveur Node actif.
+- L'écoute continue dépend du navigateur et peut être suspendue si l'onglet est mis en arrière-plan, l'ordinateur se met en veille ou Chrome économise les ressources.
+- Le micro est arrêté pendant que Sophie parle afin d'éviter que sa propre voix soit retranscrite.
+- Si le modèle ne se charge pas, vérifier que le fichier existe exactement à :
+  D:\LFS\models\vosk-model-small-fr-0.22.tar.gz

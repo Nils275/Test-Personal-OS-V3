@@ -1,0 +1,22 @@
+{
+  "name": "PERSONAL OS — Personal Command Center",
+  "short_name": "PERSONAL OS",
+  "description": "Centre de pilotage personnel local : objectifs, sport, projets, finances, calendrier et assistant vocal.",
+  "lang": "fr-FR",
+  "start_url": "./index.html#dashboard",
+  "scope": "./",
+  "display": "standalone",
+  "orientation": "any",
+  "background_color": "#080D12",
+  "theme_color": "#080D12",
+  "categories": ["productivity", "utilities", "lifestyle"],
+  "icons": [
+    { "src": "icon.svg", "sizes": "any", "type": "image/svg+xml", "purpose": "any maskable" }
+  ],
+  "shortcuts": [
+    { "name": "Dashboard", "short_name": "Dashboard", "url": "./index.html#dashboard" },
+    { "name": "Nouvel objectif", "short_name": "Objectifs", "url": "./index.html#goals" },
+    { "name": "Assistant vocal", "short_name": "Assistant", "url": "./index.html#assistant" },
+    { "name": "Journal", "short_name": "Journal", "url": "./index.html#journal" }
+  ]
+}

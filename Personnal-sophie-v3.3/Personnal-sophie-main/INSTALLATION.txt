@@ -1,0 +1,24 @@
+CORRECTIF SOPHIE — RECONNAISSANCE ELEVENLABS SCRIBE
+
+Fichiers à remplacer dans le dossier racine de PERSONAL OS :
+- server.js
+- js/voice.js
+
+Ne remplacez pas script.js : conservez le fichier de votre correctif précédent qui active le réglage « Hé Sophie ».
+
+Installation :
+1. Arrêtez le serveur avec Ctrl+C dans le terminal.
+2. Faites une copie de sauvegarde de server.js et js/voice.js.
+3. Copiez les deux fichiers du ZIP en conservant l'arborescence.
+4. Vérifiez que .env contient ELEVENLABS_API_KEY=... (la même clé que pour la voix TTS).
+5. Redémarrez avec : node server.js
+6. Ouvrez http://localhost:8080 et faites Ctrl+F5.
+7. Autorisez le microphone Chrome pour localhost.
+8. Activez « Hé Sophie » dans les réglages.
+
+Le serveur expose maintenant POST /api/stt et /api/stt/status.
+Test diagnostic : http://localhost:8080/api/stt/status
+Réponse attendue : {"configured":true,"provider":"ElevenLabs Scribe","model":"scribe_v2"}
+
+Le navigateur capture de courts segments audio et les envoie au serveur local ; le serveur les transmet à ElevenLabs Scribe. La clé API n'est jamais envoyée au navigateur.
+Cette version nécessite Internet, le serveur Node actif, la page ouverte et le microphone autorisé. La transcription par segments est moins instantanée qu'un vrai flux temps réel ; des mots peuvent parfois être coupés entre deux segments.

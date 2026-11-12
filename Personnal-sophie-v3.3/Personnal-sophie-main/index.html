@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="theme-color" content="#080D12">
+  <meta name="description" content="PERSONAL OS — Centre de pilotage personnel local, hors ligne et évolutif.">
+  <meta name="color-scheme" content="dark">
+  <title>PERSONAL OS — Personal Command Center</title>
+  <link rel="manifest" href="manifest.json">
+  <link rel="icon" href="icon.svg" type="image/svg+xml">
+  <link rel="apple-touch-icon" href="icon.svg">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;450;500;550;600;650;700&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="theme-os.css">
+  <link rel="stylesheet" href="maison-hub.css?v=3.3.0">
+  <style>html{background:#080D12;color:#EAF3F4}body{margin:0}.boot-fallback{min-height:100vh;display:grid;place-items:center;font-family:system-ui;background:#080D12}.boot-fallback span{color:#37D6A0}</style>
+</head>
+<body>
+  <a class="skip-link" href="#main-content">Aller au contenu principal</a>
+  <div class="ambient" aria-hidden="true"><span></span><span></span><div class="noise"></div></div>
+
+  <div id="app" class="app-shell">
+    <aside class="sidebar" id="sidebar" aria-label="Navigation principale">
+      <div class="brand" aria-label="Système d'exploitation personnel">
+        <span class="brand-logo" aria-hidden="true"><span class="logo-diamond"></span><span class="logo-p">P</span></span>
+        <span class="brand-copy"><strong>PERSONAL OS</strong><em>PERSONNEL</em></span>
+        <button class="rail-toggle" data-rail-toggle type="button" aria-pressed="false" aria-label="Replier le menu" title="Replier le menu (Ctrl+B)"><svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M15 6l-6 6 6 6"/></svg></button>
+      </div>
+      <nav id="main-nav" class="main-nav">
+        <button class="nav-item home-item active" data-section="maison" aria-current="page"><span class="nav-ico" data-icon="home"></span><span>Maison</span><small>ACCUEIL •</small><i class="nav-signal"></i></button>
+
+        <div class="nav-group">
+          <button class="nav-group-title" data-group="maison"><span>Gestion de la maison</span><i></i></button>
+          <div class="nav-group-items">
+            <button class="nav-item" data-section="maison-meteo"><span data-icon="cloud"></span><span>Météo & environnement</span><i class="nav-signal"></i></button>
+            <button class="nav-item" data-section="maison-actualites"><span data-icon="note"></span><span>Actualités</span><i class="nav-signal"></i></button>
+            <button class="nav-item" data-section="maison-calendrier"><span data-icon="calendar"></span><span>Calendrier</span><i class="nav-signal"></i></button>
+            <button class="nav-item" data-section="maison-courses"><span data-icon="list"></span><span>Courses & provisions</span><i class="nav-signal"></i></button>
+            <button class="nav-item" data-section="maison-cuisine"><span data-icon="book"></span><span>Cuisine & repas</span><i class="nav-signal"></i></button>
+
+            <button class="nav-item" data-section="maison-quotidien"><span data-icon="check"></span><span>Organisation du quotidien</span><i class="nav-signal"></i></button>
+            <button class="nav-item" data-section="maison-entretien"><span data-icon="wrench"></span><span>Entretien du logement</span><i class="nav-signal"></i></button>
+            <button class="nav-item" data-section="maison-budget"><span data-icon="wallet"></span><span>Budget & factures</span><i class="nav-signal"></i></button>
+            <button class="nav-item" data-section="maison-documents"><span data-icon="note"></span><span>Documents de la maison</span><i class="nav-signal"></i></button>
+            <button class="nav-item" data-section="maison-sophie"><span data-icon="mic"></span><span>Sophie — Assistante maison</span><i class="nav-signal"></i></button>
+          </div>
+        </div>
+
+        <div class="nav-group">
+          <button class="nav-group-title" data-group="quotidien"><span>Pilotage</span><i></i></button>
+          <div class="nav-group-items">
+            <button class="nav-item" data-section="calendar"><span data-icon="calendar"></span><span>Calendrier</span><i class="nav-signal"></i></button>
+            <button class="nav-item" data-section="reminders"><span data-icon="clock"></span><span>Rappels</span><i class="nav-signal"></i></button>
+            <button class="nav-item" data-section="notifications"><span data-icon="bell"></span><span>Notifications</span><b id="nav-notif-count" class="nav-count" hidden>0</b></button>
+          </div>
+        </div>
+
+        <div class="nav-group">
+          <button class="nav-group-title" data-group="objectifs"><span>Objectifs & projets</span><i></i></button>
+          <div class="nav-group-items">
+            <button class="nav-item" data-section="goals"><span data-icon="target"></span><span>Objectifs</span><i class="nav-signal"></i></button>
+            <button class="nav-item" data-section="projects"><span data-icon="folder"></span><span>Projets</span><i class="nav-signal"></i></button>
+            <button class="nav-item" data-section="sport"><span data-icon="activity"></span><span>Sport & SPV</span><i class="nav-signal"></i></button>
+          </div>
+        </div>
+
+        <div class="nav-group">
+          <button class="nav-group-title" data-group="ressources"><span>Ressources</span><i></i></button>
+          <div class="nav-group-items">
+            <button class="nav-item" data-section="finances"><span data-icon="wallet"></span><span>Finances</span><i class="nav-signal"></i></button>
+            <button class="nav-item" data-section="devices"><span data-icon="cpu"></span><span>Appareils</span><i class="nav-signal"></i></button>
+          </div>
+        </div>
+
+        <div class="nav-group">
+          <button class="nav-group-title" data-group="sophie"><span>Sophie</span><i></i></button>
+          <div class="nav-group-items">
+            <button class="nav-item" data-section="assistant"><span class="nav-sophie-avatar" data-sophie-mini></span><span>Assistant</span><small>LOCAL</small><i class="nav-signal"></i></button>
+            <button class="nav-item" data-section="journal"><span data-icon="book"></span><span>Journal personnel</span><i class="nav-signal"></i></button>
+          </div>
+        </div>
+
+        <div class="nav-group">
+          <button class="nav-group-title" data-group="systeme"><span>Système</span><i></i></button>
+          <div class="nav-group-items">
+            <button class="nav-item" data-section="settings"><span data-icon="settings"></span><span>Paramètres</span><i class="nav-signal"></i></button>
+          </div>
+        </div>
+      </nav>
+      <div class="nav-group spaces-group">
+        <button class="nav-group-title" data-group="espaces"><span>Espaces actifs</span><i></i></button>
+        <div class="nav-group-items">
+          <button class="nav-item space-item active" data-section="maison"><span class="space-dot"></span><span>MAISON</span></button>
+        </div>
+      </div>
+      <div class="sidebar-foot">
+        <button class="system-pill" data-action="workspace-toggle" title="Changer d’espace de données"><span class="status-dot"></span><span><small>ESPACE ACTIF</small><strong id="workspace-label">DÉMONSTRATION</strong></span><span data-icon="refresh"></span></button>
+        <div class="system-version"><span id="build-label">BUILD 3.3.0</span><span id="storage-status">LOCAL</span></div>
+      </div>
+    </aside>
+    <button class="sidebar-scrim" id="sidebar-scrim" aria-label="Fermer la navigation" hidden></button>
+
+    <div class="workspace">
+      <header class="topbar">
+        <div class="topbar-leading">
+          <button class="icon-button mobile-menu" data-action="menu-toggle" aria-label="Ouvrir la navigation" aria-expanded="false"><span data-icon="menu"></span></button>
+          <div class="breadcrumb"><span>POS /</span><strong id="current-section-label">MAISON</strong></div>
+        </div>
+        <div class="topbar-center">
+          <div class="clock-block"><strong id="top-clock">--:--</strong><span id="top-seconds">:--</span></div>
+          <div class="date-block"><span id="top-date">Chargement de la date</span><small id="day-progress">JOURNÉE EN COURS</small></div>
+        </div>
+        <div class="topbar-actions">
+          <button class="weather-chip" data-action="weather-open" aria-label="Configurer ou actualiser la météo"><span data-icon="cloud"></span><span id="weather-summary">Météo non configurée</span></button>
+          <button class="alarm-chip" data-action="camera-toggle" data-cam-toggle aria-pressed="false" title="Alarme : active ou coupe la caméra de surveillance"><span data-cam-chip>ALARME OFF</span></button>
+          <div class="connection-chip" id="connection-chip"><span class="status-dot"></span><span id="connection-label">Hors ligne</span></div>
+          <button class="top-avatar" data-section="maison-sophie" aria-label="Profil et Sophie"><span class="nav-sophie-avatar" data-sophie-mini></span></button>
+          <button class="icon-button top-action" data-section="notifications" aria-label="Ouvrir les notifications"><span data-icon="bell"></span><b id="top-notif-count" class="notification-dot" hidden>0</b></button>
+          <button class="icon-button top-action voice-top" data-action="voice-toggle" aria-label="Activer l’assistant vocal"><span data-icon="mic"></span></button>
+          <button class="icon-button top-action fullscreen-action" data-action="fullscreen" aria-label="Basculer en plein écran"><span data-icon="expand"></span></button>
+          <button class="icon-button top-action" data-section="settings" aria-label="Ouvrir les paramètres"><span data-icon="settings"></span></button>
+        </div>
+      </header>
+
+      <div id="demo-banner" class="demo-banner" role="note"><span data-icon="info"></span><p><strong>Espace de démonstration.</strong> Les entrées marquées « fictif » servent uniquement à explorer les fonctionnalités.</p><button data-action="workspace-real">Utiliser mes données réelles<span data-icon="arrow"></span></button><button class="icon-button" data-action="dismiss-demo" aria-label="Masquer le bandeau"><span data-icon="x"></span></button></div>
+
+      <main id="main-content" class="main-content" tabindex="-1">
+        <div class="boot-fallback"><div><span>PERSONAL OS</span><p>Initialisation du centre de commande…</p></div></div>
+      </main>
+      <footer class="statusbar"><span><i class="status-dot"></i> SYSTÈME LOCAL OPÉRATIONNEL</span><span id="last-save">AUCUNE MODIFICATION</span><span>CHIFFREMENT NON ACTIF · DONNÉES SUR CET APPAREIL</span></footer>
+    </div>
+  </div>
+
+  <dialog id="app-modal" class="modal" aria-modal="true"></dialog>
+  <div id="toast-root" class="toast-root" aria-live="polite" aria-atomic="false"></div>
+  <div id="voice-dock" class="voice-dock" aria-live="polite" hidden>
+    <button class="voice-orb-mini" data-action="voice-toggle" aria-label="Activer ou arrêter le microphone"><span class="nav-sophie-avatar" data-sophie-mini></span><i></i><i></i></button>
+    <div><strong id="voice-dock-state">Écoute en cours</strong><span id="voice-dock-text">Parlez naturellement…</span></div>
+    <button class="icon-button" data-action="voice-cancel" aria-label="Fermer l’assistant"><span data-icon="x"></span></button>
+  </div>
+  <input type="file" id="import-file" accept="application/json,.json" hidden>
+  <noscript><div class="noscript">PERSONAL OS nécessite JavaScript pour gérer vos données. Activez JavaScript puis rechargez la page.</div></noscript>
+  <!-- Garde-fou de démarrage : si les modules échouent, l'erreur exacte s'affiche au lieu d'un écran figé. -->
+  <script>
+    window.__PO_ERRORS__ = [];
+    window.addEventListener('error', function (event) {
+      window.__PO_ERRORS__.push((event.message || 'Erreur inconnue') + ' — ' + (event.filename || 'script') + ':' + (event.lineno || 0));
+    });
+    window.addEventListener('unhandledrejection', function (event) {
+      var reason = event.reason && event.reason.message ? event.reason.message : event.reason;
+      window.__PO_ERRORS__.push('Promesse rejetée : ' + reason);
+    });
+    setTimeout(function () {
+      if (document.body.classList.contains('app-ready')) return;
+      var box = document.querySelector('.boot-fallback > div');
+      if (!box) return;
+      var details;
+      if (location.protocol === 'file:') {
+        details = '<code>Vous ouvrez <b>index.html</b> directement (file://).<br>Le navigateur bloque alors les modules JavaScript de <b>js/</b> : l’application ne peut pas démarrer.<br><br>Solution : servez le dossier en local — <b>node server.js</b> puis http://localhost:8080</code>';
+      } else if (window.__PO_ERRORS__.length) {
+        details = '<code>' + window.__PO_ERRORS__.slice(0, 4).join('<br>') + '</code>';
+      } else {
+        details = '<code>Aucune erreur JavaScript capturée : vérifiez que le dossier <b>js/</b> est bien présent sur le serveur et que les fichiers ne sont pas incomplets.</code>';
+      }
+      box.innerHTML =
+        '<strong>PERSONAL OS n’a pas pu démarrer</strong>' +
+        '<p style="max-width:560px;line-height:1.7">Diagnostic automatique :</p>' +
+        '<div style="max-width:560px;text-align:left;background:#12161A;border:1px solid #262D33;border-radius:10px;padding:12px 14px;font-size:12px;color:#FF9A5A">' + details + '</div>' +
+        '<button onclick="location.reload()" style="margin-top:16px;padding:11px 20px;border-radius:9px;border:0;background:#FF7A1A;color:#1A0D02;font-weight:600;cursor:pointer">Recharger l’application</button>' +
+        '<button onclick="localStorage.clear();location.reload()" style="margin-top:16px;margin-left:8px;padding:11px 20px;border-radius:9px;border:1px solid #262D33;background:transparent;color:#B5C5CA;font-weight:600;cursor:pointer">Réinitialiser les données locales</button>';
+    }, 5000);
+  </script>
+  <!-- Autotest syntaxique : chaque module est analysé isolément pour nommer le fichier fautif. -->
+  <script>
+    setTimeout(async function () {
+      if (document.body.classList.contains('app-ready')) return;
+      var modules = ['./js/core.js', './js/ui.js', './js/view-state.js', './js/tts.js', './js/news.js',
+        './js/alarms.js', './js/focus.js', './js/reminders.js', './js/sophie.js', './js/voice.js',
+        './js/views.js', './js/views-primary.js', './js/views-operations.js', './js/views-reminders.js',
+        './js/camera.js', './js/maison-hub.js', './js/views-maison.js'];
+      var failed = [];
+      for (var i = 0; i < modules.length; i++) {
+        try { await import(modules[i]); }
+        catch (error) { failed.push(modules[i] + '  &rarr;  ' + (error && error.message ? error.message : error)); }
+      }
+      var box = document.querySelector('.boot-fallback > div');
+      if (!box) return;
+      var report = failed.length
+        ? '<div style="max-width:640px;text-align:left;background:#12161A;border:1px solid #F0564A;border-radius:10px;padding:14px 16px;font-size:12px;line-height:2;color:#FF9A5A;font-family:ui-monospace,monospace">'
+          + failed.join('<br>') + '</div>'
+          + '<p style="max-width:620px">Ces fichiers contiennent l’erreur d’analyse. Corrigez le premier nommé, puis rechargez.</p>'
+        : '<p style="max-width:620px">Tous les modules sont syntaxiquement valides. Le blocage vient alors du fichier principal <b>script.js</b> ou d’un accès au stockage local.</p>';
+      box.innerHTML = '<strong>Diagnostic syntaxique PERSONAL OS</strong>' + report +
+        '<button onclick="location.reload()" style="margin-top:16px;padding:11px 20px;border-radius:9px;border:0;background:#FF7A1A;color:#1A0D02;font-weight:600;cursor:pointer">Recharger l’application</button>';
+    }, 6500);
+  </script>
+  <script type="module" src="js/layout.js"></script>
+  <script type="module" src="script.js"></script>
+</body>
+</html>
